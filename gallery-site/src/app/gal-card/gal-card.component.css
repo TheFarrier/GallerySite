@@ -1,0 +1,32 @@
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+svg.material-icons path {
+  fill: #888;
+}
+
+.card-content {
+  display: flex;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+
+span {
+  justify-content: inherit;
+}
