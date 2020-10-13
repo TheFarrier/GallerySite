@@ -28,7 +28,7 @@ p {
   display: flex;
   margin: 82px auto 32px;
   padding: 0 16px;
-  max-width: 960px;
+  max-width: 1200px;
   flex-direction: column;
   align-items: center;
 }
@@ -230,9 +230,70 @@ svg#clouds {
   width: 1920px;
 }
 
+.account-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.account-banner {
+  width: 100%;
+  align-self: center;
+  flex: 1 100%;
+}
+
+.account-avatar {
+  width: 15%;
+  border: 5px solid white;
+  border-radius: 50%;
+  align-self: flex-start;
+  margin-top: -6%;
+  position: relative;
+  left: 12%
+}
+
+.account-subscribe {
+  align-self: flex-end;
+  width: 150px;
+  background-color: #1976d2;
+  border:none;
+  color: #eeeeee;
+  font-weight: bold;
+  font-size: 15pt;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: -8%;
+}
+
+.account-name {
+  margin-top: 5%;
+  margin-left: 2%;
+  flex-basis: 100%;
+  font-weight: bold;
+  font-size: 20pt;
+  justify-self: flex-start;
+  position: relative;
+  bottom: 10%;
+  left: 12%
+} 
+
+
 
 /* Responsive Styles */
 @media screen and (max-width: 767px) {
+
+  .content{
+    padding: 0px;
+  }
+
+  .account-subscribe{
+    width: 25%;
+    font-size: 3vw;
+  }
+
+  .account-name{
+    font-size: 4vw;
+  }
 
   .card-container > *:not(.circle-link) ,
   .terminal {
@@ -259,4 +320,8 @@ svg#clouds {
     display: none;
     visibility: hidden;
   }
+}
+
+@media screen and (min-width: 1200px) {
+  
 }
