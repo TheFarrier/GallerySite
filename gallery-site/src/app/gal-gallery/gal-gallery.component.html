@@ -1,0 +1,7 @@
+<div class="card-container">
+  <h2>{{posts.length}} Photos</h2>
+  <gal-card *ngFor="let post of posts"
+  [post]="post"
+  class="card"></gal-card>
+
+</div>
