@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn:'root'
 })
 
-export class GalleryCardService {
+export class AccountPageService {
   accounts =[
     {
       name: 'Gwen Elliot',
@@ -34,7 +34,7 @@ export class GalleryCardService {
       ]
     },{
       name: 'Henry Johnson',
-      posts:[
+      posts: [
         {
           id: 1,
           image:''
