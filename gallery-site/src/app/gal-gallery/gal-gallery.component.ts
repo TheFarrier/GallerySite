@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AccountPageService } from '../gal-account-page/gal-account-page.service';
 import { GalleryCardService } from '../gal-card/gal-card.service';
 
 @Component({
@@ -9,10 +11,16 @@ import { GalleryCardService } from '../gal-card/gal-card.service';
 export class GalGalleryComponent implements OnInit {
   posts
 
-  constructor(private GalleryCardService: GalleryCardService) { }
+  constructor(
+    private accountPageService: AccountPageService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(){
-    this.posts = this.GalleryCardService.get()
+    this.activatedRoute.paramMap
+      .subscribe(paramMap => {
+        let account = paramMap.get('account');
+        this.posts = this.accountPageService.get(account).posts
+      })
   }
 
 }

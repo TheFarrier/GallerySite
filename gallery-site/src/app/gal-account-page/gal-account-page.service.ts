@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn:'root'
@@ -8,6 +9,8 @@ export class AccountPageService {
   accounts =[
     {
       name: 'Gwen Elliot',
+      avatar: '../../assets/profile.jpg',
+      banner: '../../assets/Illustration.jpg',
       posts: [
         {
           id: 1,
@@ -34,25 +37,33 @@ export class AccountPageService {
       ]
     },{
       name: 'Henry Johnson',
+      avatar: '/../../assets/20170530_123716.jpg',
+      banner: '/../../assets/20161101_163911.jpg',
       posts: [
         {
           id: 1,
-          image:''
+          image:'/../../assets/20161101_163911.jpg'
         },{
           id: 2,
-          image:''
+          image:'/../../assets/20161101_164023.jpg'
         },{
           id: 3,
-          image:''
+          image:'/../../assets/20161101_164033.jpg'
         },{
           id: 4,
-          image:''
+          image:'/../../assets/20161101_164124.jpg'
+        },{
+          id: 5,
+          image:'/../../assets/20170530_123716.jpg'
+        },{
+          id: 6,
+          image:'/../../assets/20170530_124928.jpg'
         }
       ]
     }
   ];
 
   get(name) {
-    return this.accounts.find(account => account.name.trim().toLowerCase() === name.trim().toLowerCase())
+    return this.accounts.find(account => account.name.toLowerCase().replace(/\s+/g, '') === name.trim().replace(/\s+/g, ''))
   }
 }

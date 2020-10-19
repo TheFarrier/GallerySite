@@ -9,8 +9,12 @@ import { AccountPageService } from './gal-account-page.service'
 })
 
 export class GalAccountPageComponent implements OnInit {
-  account = '';
-  posts = [];
+  account = {
+    name: 'Loading...',
+    avatar: '',
+    banner: '',
+    posts: []
+  };
 
   constructor(
     private accountPageService: AccountPageService,
@@ -20,14 +24,8 @@ export class GalAccountPageComponent implements OnInit {
   ngOnInit(){
     this.activatedRoute.paramMap
       .subscribe(paramMap => {
-        let account = paramMap.get('account')
-        this.getPosts(account)
+        let account = paramMap.get('account');
+        this.account = this.accountPageService.get(account)
       })
   }
-
-  getPosts(account: string) {
-    this.account = account;
-    this.posts = this.accountPageService.get(account).posts;
-  }
-
 }
