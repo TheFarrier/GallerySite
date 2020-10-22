@@ -1,3 +1,10 @@
+h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 100%
+}
+
 .card svg.material-icons path {
   fill: #888;
 }
@@ -54,11 +61,39 @@
   margin-left: 60px;
 }
 
-h2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 100%
+.card-image {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-image img{
+  height: 110%;
+  min-width: 110%;
+  position: absolute;
+  margin-left: 50%;
+  transform: translateX(-50%);  
+}
+
+.card-body {
+  flex-direction: row;
+  justify-content: center;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125699;
+}
+
+span {
+  justify-self: center;
 }
 
 /* Responsive Styles */
@@ -69,6 +104,8 @@ h2 {
     width: 32%;
     max-height: 35vw;
   }
+
+ 
 
   .card:not(.highlight-card) {
     margin: 4px;
