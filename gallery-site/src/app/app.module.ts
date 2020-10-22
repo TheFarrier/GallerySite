@@ -7,6 +7,7 @@ import { GalToolbarComponent } from './gal-toolbar/gal-toolbar.component';
 import { GalCardComponent } from './gal-card/gal-card.component';
 import { GalAccountPageComponent } from './gal-account-page/gal-account-page.component';
 import { GalGalleryComponent } from './gal-gallery/gal-gallery.component';
+import { LightboxModule } from 'ngx-lightbox';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { GalGalleryComponent } from './gal-gallery/gal-gallery.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LightboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
