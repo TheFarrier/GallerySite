@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Lightbox } from 'ngx-lightbox';
 import { AccountPageService } from '../gal-account-page/gal-account-page.service';
-import { GalleryCardService } from '../gal-card/gal-card.service';
 
 @Component({
   selector: 'gal-gallery',
@@ -13,7 +13,13 @@ export class GalGalleryComponent implements OnInit {
 
   constructor(
     private accountPageService: AccountPageService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private _lightbox: Lightbox) { }
+  
+  open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this.posts, index);
+  }
 
   ngOnInit(){
     this.activatedRoute.paramMap
@@ -21,6 +27,7 @@ export class GalGalleryComponent implements OnInit {
         let account = paramMap.get('account');
         this.posts = this.accountPageService.get(account).posts
       })
+    console.log(this.posts)
   }
 
 }

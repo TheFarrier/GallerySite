@@ -14,25 +14,25 @@ export class AccountPageService {
       posts: [
         {
           id: 1,
-          image: '../../assets/Gwen_001.png'
+          src: '../../assets/Gwen_001.png'
         },{
           id: 2,
-          image: '../../assets/Gwen_look_crop.png'
+          src: '../../assets/Gwen_look_crop.png'
         },{
           id: 3,
-          image: '../../assets/Gwen_Pool_003.png'
+          src: '../../assets/Gwen_Pool_003.png'
         },{
           id: 4,
-          image: '../../assets/Gwen_Pool_005.png'
+          src: '../../assets/Gwen_Pool_005.png'
         },{
           id: 5,
-          image: '../../assets/Gwen_Pool_009.png'
+          src: '../../assets/Gwen_Pool_009.png'
         },{
           id: 6,
-          image: '../../assets/MoreGwenBeachShots_002.png'
+          src: '../../assets/MoreGwenBeachShots_002.png'
         },{
           id: 7,
-          image: '../../assets/MoreGwenBeachShots_004.png'
+          src: '../../assets/MoreGwenBeachShots_004.png'
         }
       ]
     },{
@@ -42,22 +42,22 @@ export class AccountPageService {
       posts: [
         {
           id: 1,
-          image:'/../../assets/20161101_163911.jpg'
+          src:'/../../assets/20161101_163911.jpg'
         },{
           id: 2,
-          image:'/../../assets/20161101_164023.jpg'
+          src:'/../../assets/20161101_164023.jpg'
         },{
           id: 3,
-          image:'/../../assets/20161101_164033.jpg'
+          src:'/../../assets/20161101_164033.jpg'
         },{
           id: 4,
-          image:'/../../assets/20161101_164124.jpg'
+          src:'/../../assets/20161101_164124.jpg'
         },{
           id: 5,
-          image:'/../../assets/20170530_123716.jpg'
+          src:'/../../assets/20170530_123716.jpg'
         },{
           id: 6,
-          image:'/../../assets/20170530_124928.jpg'
+          src:'/../../assets/20170530_124928.jpg'
         }
       ]
     }
