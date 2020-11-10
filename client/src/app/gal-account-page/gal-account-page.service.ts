@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -63,7 +64,11 @@ export class AccountPageService {
     }
   ];
 
+  constructor( private http:HttpClient ){}
+
   get(name) {
-    return this.accounts.find(account => account.name.toLowerCase().replace(/\s+/g, '') === name.trim().replace(/\s+/g, ''))
+    // this needs to be replaced with a call to the database API
+    return this.http.get('mongodb://localhost/GallerySite')
+    // return this.accounts.find(account => account.name.toLowerCase().replace(/\s+/g, '') === name.trim().replace(/\s+/g, ''))
   }
 }

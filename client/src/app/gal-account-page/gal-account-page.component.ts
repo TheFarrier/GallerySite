@@ -25,7 +25,11 @@ export class GalAccountPageComponent implements OnInit {
     this.activatedRoute.paramMap
       .subscribe(paramMap => {
         let account = paramMap.get('account');
-        this.account = this.accountPageService.get(account)
+        this.accountPageService.get(account).subscribe((data)=>{
+          console.log("get api data", data)
+        }
+        )
+        // this.account = this.accountPageService.get(account)
       })
   }
 }

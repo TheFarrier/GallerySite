@@ -25,7 +25,7 @@ export class GalGalleryComponent implements OnInit {
     this.activatedRoute.paramMap
       .subscribe(paramMap => {
         let account = paramMap.get('account');
-        this.posts = this.accountPageService.get(account).posts
+        // this.posts = this.accountPageService.get(account).posts
       })
     console.log(this.posts)
   }
