@@ -1,21 +1,23 @@
 const mongoose = require("mongoose");
-const crypto = require("crypto")
+const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema ({
-  name: {type: String, required: true},
-  avatar: {type: String, required: true},
-  banner: {type: String, required: true},
+  email: {type: String, required: true},
+  username: {type: String, required: true},
+  avatar: {type: String, required: false},
+  banner: {type: String, required: false},
   posts: [{type: String}],
-  hash: String,
-  salt: String
+  hash: {type: String, required: true}
 });
 
 userSchema.methods.setPassword = (password) => {
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
-    .toString('hex')
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(password, salt, (err, hash) =>{
+      this.hash = hash
+    })
+  })
 };
 
 userSchema.methods.generateJwt = function() {
@@ -26,7 +28,7 @@ userSchema.methods.generateJwt = function() {
     {
       _id: this._id,
       email: this.email,
-      name: this.name,
+      username: this.name,
       avatar: this.avatar,
       exp: parseInt(expiry.getTime() / 1000)
     },
