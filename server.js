@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/client/dist')));
+  app.use(express.static(path.join(__dirname, 'public')));
 } else {
   app.use(express.static(path.join(__dirname, '/client')))
 }
