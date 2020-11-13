@@ -7,10 +7,11 @@ router.route("/")
   .put(userController.updateUser)
 
 // Matches with "/api/user/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(userController.findUser)
   .delete(userController.removeUser)
 
+router.route("/authenticate")
+  .post(userController.authenticateUser)
 
 module.exports = router;
