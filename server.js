@@ -1,39 +1,41 @@
-const express = require("express");
-
-
-const http = require('http');
+const express = require('express');
+const path = require('path')
 const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
+const mongoose = require('mongoose');
 
-const cookieParser = require('cookie-parser');
-const createError = require('http-errors');
-
-const mongoose = require("mongoose");
-const path = require("path")
-const routes = require("./api/routes");
+const routes = require('./api/routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define middleware here
+// Middleware
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, 'dist')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/dist')));
 } else {
-  app.use(express.static(path.join(__dirname, '../src')))
+  app.use(express.static(path.join(__dirname, '/client')))
 }
 
 // Add routes, both API and view
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/GallerySite");
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/GallerySite');
 
-const server = http.createServer(app);
+mongoose.connection.on('connected', () => {
+  console.log("Connected to database");
+})
 
-// Start the API server
-server.listen(PORT, function() {
+mongoose.connection.on('error', () => {
+  console.log("Failed databse connection");
+})
+
+// Start API Server
+app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
