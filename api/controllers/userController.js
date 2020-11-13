@@ -1,5 +1,6 @@
 const db = require("../models")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 module.exports ={
   registerUser: async function(req, res) {
@@ -34,10 +35,24 @@ module.exports ={
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  authenticateUser: function(req, res) {
+  authenticateUser: async function(req, res) {
     db.User
-      .findById({ _id: req.params.id })
-      .then(dbModel => res.json(dbModel))
+      .findOne({username: req.body.username})
+      .then(user => {
+        bcrypt.compare(req.body.password, user.hash, (err, isMatch) => {
+          if(err) throw err;
+          if(isMatch) {
+            jwt.sign(req.body, 'secretkey', (err, token) =>{
+              res.json({token})
+            }),
+            console.log("Authenticated")   
+          } else {
+            res.json("password bad")
+          }
+        })
+      })
       .catch(err => res.status(422).json(err));
+    
+    
   }
 };
