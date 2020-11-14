@@ -1,0 +1,34 @@
+{
+  "name": "gallerysite",
+  "version": "1.0.0",
+  "description": "An image hosting social media site in early development",
+  "main": "server.js",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "if-env": "^1.0.4",
+    "nodemon": "^2.0.6",
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheFarrier/GallerySite.git"
+  },
+  "author": "Nathaniel Farrey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheFarrier/GallerySite/issues"
+  },
+  "homepage": "https://github.com/TheFarrier/GallerySite#readme"
+}
