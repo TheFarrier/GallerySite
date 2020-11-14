@@ -19,11 +19,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, 'public')));
-} else {
-  app.use(express.static(path.join(__dirname, '/client')))
-}
+app.use(express.static(path.join(__dirname, './public')));
+
 
 // Add routes, both API and view
 app.use(routes);
