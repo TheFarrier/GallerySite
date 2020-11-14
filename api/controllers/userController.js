@@ -1,6 +1,7 @@
 const db = require("../models")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const passport = require("passport")
 
 module.exports ={
   registerUser: async function(req, res) {
@@ -13,8 +14,6 @@ module.exports ={
           .catch(err => res.status(422).json(err));
       })
     })
-    
-   
   },
   findUser: function(req, res) {
     db.User
@@ -42,8 +41,17 @@ module.exports ={
         bcrypt.compare(req.body.password, user.hash, (err, isMatch) => {
           if(err) throw err;
           if(isMatch) {
-            jwt.sign(req.body, 'secretkey', (err, token) =>{
-              res.json({token})
+            jwt.sign(req.body, 'secretkey', { expiresIn: '7d'}, (err, token) =>{
+              res.json({
+                token: token,
+                user : {
+                  id: user._id,
+                  email: user.email,
+                  username: user.username,
+                  avatar: user.avatar,
+
+                }
+              })
             }),
             console.log("Authenticated")   
           } else {
@@ -52,7 +60,23 @@ module.exports ={
         })
       })
       .catch(err => res.status(422).json(err));
-    
+  },
+  accessProfile: function(req, res) {
+    console.log('accessing profile')
+
+    db.User
+      .findById({ _id: req.body._id })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+      
+    // const bearerHeader = req.headers['authorization'];
+
+    // if(typeof bearerHeader !== 'undefined') {
+      
+    // } else {
+    //   res.sendstatus(403)
+    // }
+
     
   }
 };
